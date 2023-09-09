@@ -1,16 +1,20 @@
 from message.message import Message
+import pytest
 
-def test_message_empty_strings():
-    message = Message(contents="",author="")
-    assert message.author == ""
-    assert message.contents == ""
+# typical use case for new message
+def test_new_message():
+    content = "you're reading this"
+    author = "an author"
+    message = Message(content=content, author=author)
+    assert message.author == author
+    assert message.content == content
 
-def test_message_empty_contents():
-    message = Message(contents="", author="User")
-    assert message.author == "User"
-    assert message.contents == ""
+# message without content is not allowed
+def test_new_message_contains_empty_content():
+    with pytest.raises(ValueError):
+        message = Message(content="", author="an author")
 
-def test_message_empty_author():
-    message = Message(contents="something", author="")
-    assert message.contents == "something"
-    assert message.author == ""
+# message without author is not allowed
+def test_new_message_without_author_should_fail():
+    with pytest.raises(ValueError):
+        message = Message(content="something", author="")
