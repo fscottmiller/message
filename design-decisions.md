@@ -24,3 +24,9 @@ Out of initial scope:
 2. history, message versions, complex data operations - initial configuration will simply store messages
 3. multiple environments
 4. load, integration, e2e testing
+
+
+## Tooling Decisions
+1. Service will be implemented in Python using FastAPI. That's mostly to keep development simple and easy.
+
+https://stackoverflow.com/questions/193161/what-is-the-best-project-structure-for-a-python-application
